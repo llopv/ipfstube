@@ -36,6 +36,8 @@
 		tryNextUrl();
 	});
 
+	let def = " default"
+
 	Object.keys(subs).forEach((sub) => {
 
 		// Sliced 'ipfs:' handler because Firefox doesn't support it for video tracks
@@ -50,7 +52,8 @@
 			}
 		}
 
-		let track = $('<track kind="subtitles" label="'+sub+'" srclang="'+sub+'"></track>')
+		let track = $(`<track kind="subtitles" label="${sub}" srclang="${sub}"${def}></track>`)
+		def = ""
 		track.on('error', function() {
 			console.log("error")
 			tryNextUrl($(this));
