@@ -1,17 +1,22 @@
 (function() {
-	var hash = location.pathname.split('/').pop();
+	queries = {}
+	$.each(document.location.search.substr(1).split('&'),function(q){
+    console.log(q);var i = q.split('=')
+    queries[i[0].toString()] = i[1].toString()
+  })
+
+	var hash = queries.v
 	try {
-		console.log(location.search.split('=')[1])
-		var subs = JSON.parse(decodeURIComponent(location.search.split('=')[1]))
+		var subs = JSON.parse(decodeURIComponent(queries.subs))
 	} catch(e) {
 		var subs = {}
 	}
-console.log(subs)
-	 // hash = 'QmYYMMKS5z9h2CL69GBTTys2SFRZH7XM2iiRTuqrYhYGkj';
-	 /*subs = {
+
+	// hash = 'QmYYMMKS5z9h2CL69GBTTys2SFRZH7XM2iiRTuqrYhYGkj';
+	/* subs = {
 		"en": "Qmd9h2eZb4ft4cZAxtypj4YSs4iDu9kLfeXtG2ECgx4Mcc",
 		"es": "QmeVvJaydsTNJ493JPp5xcvMjMZaWBuS8eZoMCh6vpVTgV"
-	 }*/
+	}*/
 
 	var playerHolder = $('#player__holder');
 	var player = $('#player');

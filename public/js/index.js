@@ -2,7 +2,7 @@
 	Dropzone.options.uploader = false;
 
 	var dropzone = new Dropzone('#uploader', {
-		url: '/upload',
+		url: 'https://ipfstube.erindachtler.me/upload',
 		uploadMultiple: false,
 		parallelUploads: 1,
 		dictDefaultMessage: 'Drop video here or click to upload',
@@ -16,7 +16,7 @@
 	dropzone.on('success', function(file, response) {
 		console.log('upload success', response);
 		setTimeout(function() {
-			location.assign('/v/' + response.Hash);
+			location.assign('player.html?v=' + response.Hash);
 		}, 500);
 	});
 })();
